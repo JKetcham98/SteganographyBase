@@ -8,4 +8,5 @@ import javax.swing.border.*;
 
 public class PictureViewer {
 
+	
 }
