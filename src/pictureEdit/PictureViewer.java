@@ -67,7 +67,7 @@ public class PictureViewer extends JPanel implements Scrollable{
 	public void paintComponent(Graphics g)
 	  {
 	    super.paintComponent(g);
-	    int num = 3;
+	    int num = 3;//length of scrolling cross
 	    int xStart = currentX - num;
 	    int xEnd = currentX + num;
 	    int yStart = currentY - num;
