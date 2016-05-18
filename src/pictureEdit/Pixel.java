@@ -10,6 +10,7 @@ import java.awt.geom.*;
 public class Pixel {
 //instance variables
 	private BufferedImage picture;//from the java image class
+	private Picture pic;
 	
 	private int x;//x location(column)
 	private int y;//y location(row)
@@ -17,6 +18,11 @@ public class Pixel {
 //constructor
 	public Pixel(BufferedImage picture, int x, int y){
 		this.picture=picture;
+		this.x=x;
+		this.y=y;
+	}
+	public Pixel(Picture picture, int x, int y){
+		this.pic=picture;
 		this.x=x;
 		this.y=y;
 	}
@@ -35,6 +41,13 @@ public class Pixel {
 		this.y=a;
 	}
 	//returns specific values from a 32 bit integer that represents a RGBA color
+	public Color getColor() { 
+	    int value = picture.getRGB(x,y);
+	    int red = (value >> 16) & 0xff;
+	    int green = (value >>  8) & 0xff;
+	    int blue = value & 0xff;
+	    return new Color(red,green,blue);
+	}
 	public int getAlpha() {//gives alpha
 		int value = picture.getRGB(x,y);//gives A value
 		return (value >> 24) & 0xff;

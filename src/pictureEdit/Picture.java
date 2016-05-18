@@ -1,4 +1,4 @@
-package classes;
+package pictureEdit;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -85,7 +85,7 @@ public class Picture{
    title = "None";
    fileName = "None";
    extension = "jpg";
-   setAllPixelsToAColor(Color.white);
+   //setAllPixelsToAColor(Color.white);
  }
  
  /**
@@ -168,27 +168,10 @@ public class Picture{
      {
        sourcePixel = sourcePicture.getPixel(sourceX,sourceY);
        targetPixel = this.getPixel(targetX,targetY);
-       targetPixel.setColor(sourcePixel.getColor());
+       targetPixel.setColor(sourcePixel.getAlpha(),sourcePixel.getRed(),sourcePixel.getGreen(),sourcePixel.getBlue());
      }
    }
    
- }
- 
- /**
-  * Method to set the color in the picture to the passed color
-  * @param color the color to set to
-  */
- public void setAllPixelsToAColor(Color color)
- {
-   // loop through all x
-   for (int x = 0; x < this.getWidth(); x++)
-   {
-     // loop through all y
-     for (int y = 0; y < this.getHeight(); y++)
-     {
-       getPixel(x,y).setColor(color);
-     }
-   }
  }
  
  /**
@@ -244,11 +227,11 @@ public class Picture{
   * Method to set the title for the picture
   * @param title the title to use for the picture
   */
- public void setTitle(String title) 
- {
+ public void setTitle(String title){
    this.title = title;
-   if (pictureFrame != null)
+   if (pictureFrame != null){
        pictureFrame.setTitle(title);
+   }
  }
  
  /**
@@ -419,7 +402,7 @@ public class Picture{
  public void explore()
  {
    // create a copy of the current picture and explore it
-   new PictureExplorer(new SimplePicture(this));
+   new PictureViewer(new Picture(this));
  }
  
  /**
@@ -748,19 +731,6 @@ public class Picture{
    return output;
  }
 
-} // end of SimplePicture class
+} // end of Picture class
 
-	
-	
-	
-	
-	
-	//methods
-	public Graphics2D createGraphics(BufferedImage i){
-		return i.createGraphics();
-	}
-	public static void main(String[] args){
-		BufferedImage buff = new BufferedImage(100,100,BufferedImage.TYPE_INT_RGB);
-		buff.createGraphics();
-	}
-}
+
