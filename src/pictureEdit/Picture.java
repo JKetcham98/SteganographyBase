@@ -442,14 +442,11 @@ public class Picture{
    
    File file = new File(this.fileName);
 
-   if (!file.canRead()) 
-   {
+   if (!file.canRead()){
      // try adding the media path 
      file = new File(FileChooser.getMediaPath(this.fileName));
-     if (!file.canRead())
-     {
-       throw new IOException(this.fileName +
-                             " could not be opened. Check that you specified the path");
+     if (!file.canRead()){
+       throw new IOException(this.fileName +" could not be opened. Check that you specified the path");
      }
    }
    
