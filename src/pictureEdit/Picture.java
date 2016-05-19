@@ -1,4 +1,4 @@
-package pictureEdit;
+package pictureEdit;///////////////////
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -96,10 +96,10 @@ public class Picture{
   * @param height the desired height
   * @param theColor the background color for the picture
   */
- public Picture(int width, int height, Color theColor)
+ public Picture(int width, int height, int theColor)
  {
    this(width,height);
-   setAllPixelsToAColor(theColor);
+   setAllPixelsToAColor(theColor,theColor,theColor,theColor);
  }
  
  /**
@@ -402,7 +402,7 @@ public class Picture{
  public void explore()
  {
    // create a copy of the current picture and explore it
-   new PictureViewer(new Picture(this));
+   new PictureExplorer(new Picture(this));
  }
  
  /**
@@ -726,6 +726,18 @@ public class Picture{
    String output = "Simple Picture, filename " + fileName + 
      " height " + getHeight() + " width " + getWidth();
    return output;
+ }
+ public void setAllPixelsToAColor(int alpha, int red, int green, int blue)
+ {
+   // loop through all x
+   for (int x = 0; x < this.getWidth(); x++)
+   {
+     // loop through all y
+     for (int y = 0; y < this.getHeight(); y++)
+     {
+       getPixel(x,y).setColor(alpha,red,green,blue);
+     }
+   }
  }
 
 } // end of Picture class

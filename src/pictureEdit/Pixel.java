@@ -80,9 +80,4 @@ public class Pixel {
 	public String toString(){
 	    return "Y= " + getY() + "\nX= " + getX() +"\nAlpha,Red,Green,Blue= " + getAlpha()+","+ getRed() + "," + getGreen() + "," + getBlue();
 	}
-	public static void main(String[] args){
-		Pixel p1= new Pixel(null,1,2);
-		System.out.println(p1);
-		
-	}
 }
