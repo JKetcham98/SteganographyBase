@@ -6,9 +6,11 @@ public class MainRunner {
 		//pic.explore();
 		
 		System.out.println(textToBinary("How are you today?"));
-		//System.out.println(binaryToText("0100000100100000011001110010000000111010"));
-		System.out.println(textToBinary("A g :"));
-		System.out.println(stringToInt("1001"));
+		System.out.println(binaryToText("01000001"));
+		System.out.println(textToBinary("A"));
+		System.out.println(toBaseTen(11111111));
+		System.out.println(stringToInt("100"));
+		System.out.println(toBinary(255));
 		
 	}
 	
@@ -20,9 +22,10 @@ public class MainRunner {
 		String phrase = "";
 		String temp="";
 		for(int spot=0;spot<num.length();spot++){
-			temp+=spot;
+			temp+=num.charAt(spot);
 			if(temp.length()==8){
-				phrase+=(char)(stringToInt((temp)));
+				phrase+=(char)toBaseTen(stringToInt((temp)));
+				temp="";
 			}
 		}
 		return phrase;
@@ -30,9 +33,9 @@ public class MainRunner {
 	public static int stringToInt(String str){//broken
 		int num=0;
 		for(int index=0;index<str.length();index++){
-			num+= (int)(str.charAt(index)*Math.pow(10,index));
+			num+= ((int)(str.charAt(index)-48)*Math.pow(10,index));
 		}
-		return num;
+		return (int)num;
 	}
 	
 	public static String textToBinary(String phrase){
@@ -58,5 +61,16 @@ public class MainRunner {
 			place++;
 		}
 		return (int)temp/10;
+	}
+	
+	public static int toBaseTen(int number){//converts binary to base 10
+		double temp=0;//temp value holder
+		int place=0;//marks the place slot
+		while(number>0){
+			temp= ((number%10))*Math.pow(2,place)+temp;//uses weighted multiplication to convert binary to base 10
+			number = number/10;
+			place++;
+		}
+		return (int)temp;
 	}
 }
