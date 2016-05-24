@@ -2,7 +2,6 @@ package pictureEdit;///////////////////
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 import java.awt.*;
 import java.io.*;
 import java.awt.geom.*;
@@ -773,5 +772,41 @@ public class Picture {
 			}
 		}
 	}
-
+	public void encodeMessage(String str) {
+		String binary=MainRunner.textToBinary(str);
+		int position=0;
+		int newDigit;
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				if(position<binary.length()){
+					newDigit=binary.charAt(position);
+					position++;
+					int initialRed=MainRunner.toBinary(pixelObj.getRed());
+					if(initialRed%10==1){
+						initialRed=initialRed-1;
+					}
+					int newRed=initialRed;
+					if(newDigit==1){
+						newRed+=1;
+					}	
+					pixelObj.setRed(newRed);
+				}
+			}
+		}
+	}
+	public String decodeMessage(int length) {
+		String binaryOutput="";
+		length=length*8;
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray){
+				if(length>0){
+					binaryOutput=binaryOutput+((MainRunner.toBinary(pixelObj.getRed()))%10);
+					length--;
+				}
+			}
+		}
+		return MainRunner.decode(binaryOutput);
+	}
 } // end of Picture class

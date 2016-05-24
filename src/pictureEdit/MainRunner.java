@@ -3,10 +3,9 @@ package pictureEdit;
 public class MainRunner {
 	public static void main(String[] args) {
 		Picture pic = new Picture("BaseNaturePicture.png");
+		//pic.encodeMessage("Hellodfghjkljhgfdvgbaskjdhf");
 		pic.explore();
-		String binphrase=textToBinary("Hello World!");
-		System.out.println(binphrase);
-		System.out.println(decode(binphrase));
+		System.out.println(pic.decodeMessage(5));
 	}
 	
 	
