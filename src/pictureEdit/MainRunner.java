@@ -2,12 +2,14 @@ package pictureEdit;
 
 public class MainRunner {
 	public static void main(String[] args) {
-		//Picture pic = new Picture("BaseNaturePicture.jpg");
-		//pic.explore();
-		String binphrase=textToBinary("How are you today?");
+		Picture pic = new Picture("BaseNaturePicture.png");
+		pic.explore();
+		String binphrase=textToBinary("Hello World!");
 		System.out.println(binphrase);
 		System.out.println(decode(binphrase));
 	}
+	
+	
 	
 	
 	
