@@ -803,10 +803,30 @@ public class Picture {
 			for (Pixel pixelObj : rowArray){
 				if(length>0){
 					binaryOutput=binaryOutput+((MainRunner.toBinary(pixelObj.getRed()))%10);
-					length--;
 				}
+				length--;
 			}
 		}
 		return MainRunner.decode(binaryOutput);
+	}
+	
+	public void printRGB(int length) {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray){
+				if(length>0){
+					System.out.println(pixelObj.getRed());
+				}
+				length--;
+			}
+		}
+	}
+	public void makeRed() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray){
+				pixelObj.setRed(255);
+			}
+		}
 	}
 } // end of Picture class

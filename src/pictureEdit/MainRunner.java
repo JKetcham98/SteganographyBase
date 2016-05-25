@@ -3,11 +3,16 @@ package pictureEdit;
 public class MainRunner {
 	public static void main(String[] args) {
 		Picture pic = new Picture("BaseNaturePicture.png");
-		//pic.encodeMessage("Hellodfghjkljhgfdvgbaskjdhf");
+		pic.printRGB(5);
+		pic.encodeMessage("Hellodfghjkljhgfdvgbaskjdhf");
+		pic.printRGB(5);
+		pic.makeRed();
 		pic.explore();
 		System.out.println(pic.decodeMessage(5));
 	}
 	
+	
+	//test method
 	
 	
 	
