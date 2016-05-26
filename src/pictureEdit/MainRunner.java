@@ -3,22 +3,12 @@ package pictureEdit;
 public class MainRunner {
 	public static void main(String[] args) {
 		Picture pic = new Picture("BaseNaturePicture.png");
-		pic.printRGB(5);
-		pic.encodeMessage("Hellodfghjkljhgfdvgbaskjdhf");
-		pic.printRGB(5);
-		pic.makeRed();
+		String message="We have finished our project!";
+		pic.encodeMessage(message);
 		pic.explore();
-		System.out.println(pic.decodeMessage(5));
+		System.out.println(pic.decodeMessage(message.length()));
 	}
-	
-	
-	//test method
-	
-	
-	
-	
-	
-	
+
 	//binary conversion methods
 	public static String decode(String str){
 		return reverseString(binaryToText(str));

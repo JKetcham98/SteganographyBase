@@ -2,9 +2,11 @@ package pictureEdit;///////////////////
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.awt.*;
-import java.io.*;
 import java.awt.geom.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * A class that represents a simple picture. A simple picture may have an
@@ -780,17 +782,15 @@ public class Picture {
 		for (Pixel[] rowArray : pixels) {
 			for (Pixel pixelObj : rowArray) {
 				if(position<binary.length()){
-					newDigit=binary.charAt(position);
+					newDigit=binary.charAt(position)-48;
 					position++;
-					int initialRed=MainRunner.toBinary(pixelObj.getRed());
-					if(initialRed%10==1){
-						initialRed=initialRed-1;
-					}
-					int newRed=initialRed;
+					int red=pixelObj.getRed();
+					red=red>>1;
+					red=red<<1;
 					if(newDigit==1){
-						newRed+=1;
+						red+=1;
 					}	
-					pixelObj.setRed(newRed);
+					pixelObj.setRed(red);
 				}
 			}
 		}
@@ -828,5 +828,10 @@ public class Picture {
 				pixelObj.setRed(255);
 			}
 		}
+	}
+	public static void takeImage(RenderedImage im, String formatName) throws IOException{
+		
+		File outputfile = new File("Steganography.png");
+		ImageIO.write(im, formatName, outputfile);
 	}
 } // end of Picture class
